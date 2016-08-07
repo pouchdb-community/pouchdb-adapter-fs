@@ -1,0 +1,21 @@
+{
+  "name": "pouchdb-adapter-fs",
+  "version": "1.0.0",
+  "description": "PouchDB adapter that uses fsdown",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fs",
+    "pouchdb",
+    "adapter"
+  ],
+  "author": "Nolan Lawson <nolan.lawson@gmail.com> (https://nolanlawson.com)",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "fsdown": "^1.0.0",
+    "js-extend": "^1.0.1",
+    "pouchdb-adapter-leveldb-core": "^5.4.5"
+  }
+}
