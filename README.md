@@ -10,7 +10,7 @@ Usage
 
 Install:
 
-    npm install pouchdb-adpater-fs
+    npm install pouchdb-adapter-fs
 
 Then
 
