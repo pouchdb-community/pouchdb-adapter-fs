@@ -4,7 +4,7 @@
   "description": "PouchDB adapter that uses fsdown",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cd node_modules/pouchdb && npm i && npm link ../.. && CLIENT_ADAPTER=pouchdb-adapter-fs npm t"
   },
   "keywords": [
     "fs",
@@ -17,5 +17,10 @@
     "fsdown": "^1.0.0",
     "js-extend": "^1.0.1",
     "pouchdb-adapter-leveldb-core": "^5.4.5"
-  }
+  },
+  "devDependencies": {
+    "pouchdb": "pouchdb/pouchdb#2f3ea3fc121e276062dc6a134da70e36cb678be1
+"
+  },
+  "files": []
 }
