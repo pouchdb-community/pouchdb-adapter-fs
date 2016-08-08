@@ -20,3 +20,4 @@ var PouchDB = require('pouchdb-core')
 
 var db = new PouchDB('mydb', {adapter: 'fs'});
 ```
+
