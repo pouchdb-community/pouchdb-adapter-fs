@@ -19,8 +19,7 @@
     "pouchdb-adapter-leveldb-core": "^5.4.5"
   },
   "devDependencies": {
-    "pouchdb": "pouchdb/pouchdb#2f3ea3fc121e276062dc6a134da70e36cb678be1
-"
+    "pouchdb": "pouchdb/pouchdb#2f3ea3fc121e276062dc6a134da70e36cb678be1"
   },
   "files": []
 }
