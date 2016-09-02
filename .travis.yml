@@ -1,3 +1,4 @@
+sudo: false
 language: node_js
 node_js:
   - "5"
@@ -5,9 +6,9 @@ services:
   - couchdb
 git:
   depth: 30
-sudo: false
-script: npm test
+env:
+  matrix:
+  - COUCH_HOST=http://localhost:5984
 branches:
-  only:
-  - master
-  - /^greenkeeper-.*$/
+  except:
+    - /^v\d+\.\d+\.\d+$/
