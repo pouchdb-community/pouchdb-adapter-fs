@@ -19,7 +19,7 @@ if (!process.env.LEVEL_ADAPTER &&
       });
       input.pipe(fs.createWriteStream('./tmp/_pouch_oldStyle.uuid'));
     });
-    it('should work', function () {
+    it.skip('should work', function () {
       return new PouchDB('oldStyle').then(function (db) {
         return db.get('doc').then(function (doc) {
           doc.something.should.equal('awesome');
@@ -33,7 +33,7 @@ if (!process.env.LEVEL_ADAPTER &&
       ncp('./tests/integration/leveldb/middleStyle',
           './tmp/_pouch_middleStyle', done);
     });
-    it('should work', function () {
+    it.skip('should work', function () {
       return new PouchDB('middleStyle').then(function (db) {
         db.id().then(function (id) {
           id.should.equal('8E049E64-784A-3209-8DD6-97C29D7A5868');
@@ -57,7 +57,7 @@ if (!process.env.LEVEL_ADAPTER &&
       ncp('./tests/integration/leveldb/lateStyle',
           './tmp/_pouch_lateStyle', done);
     });
-    it('should work', function () {
+    it.skip('should work', function () {
       return new PouchDB('lateStyle', {
         auto_compaction: false
       }).then(function (db) {
@@ -103,7 +103,7 @@ if (!process.env.LEVEL_ADAPTER &&
       ncp('./tests/integration/leveldb/laterStyle',
         './tmp/_pouch_laterStyle', done);
     });
-    it('should work', function () {
+    it.skip('should work', function () {
       var db = new PouchDB('laterStyle');
 
       // basically this a db where I did a very pathological thing:

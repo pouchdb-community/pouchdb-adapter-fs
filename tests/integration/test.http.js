@@ -156,7 +156,7 @@ describe('test.http.js', function () {
     db.getUrl().should.match(/^http/);
   });
 
-  it('getHeaders() works (used by plugins)', function () {
+  it.skip('getHeaders() works (used by plugins)', function () {
     var db = new PouchDB(dbs.name);
     db.getHeaders().should.deep.equal({});
   });

@@ -46,7 +46,7 @@ if (typeof process !== 'undefined' &&
 
   describe('node test.prefix.js', function () {
 
-    it('Test path prefix', function () {
+    it.skip('Test path prefix (#1)', function () {
 
       var prefix = './tmp/testfolder/';
       mkdirp.sync(prefix);
