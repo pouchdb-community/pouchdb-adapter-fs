@@ -12,7 +12,7 @@ if (!process.env.LEVEL_ADAPTER &&
 
     beforeEach(function () {
       return new PouchDB('mydb').destroy().then(function () {
-        return new PouchDB('mydb', {db: require('memdown')}).destroy();
+        return new PouchDB('mydb', {db: require('memdown'), adapter: 'fs'}).destroy();
       });
     });
 
@@ -42,10 +42,10 @@ if (!process.env.LEVEL_ADAPTER &&
     });
 
     it('Defaults leaks eventEmitters', function () {
-      PouchDB.defaults({db: require('memdown') });
-      PouchDB.defaults({db: require('memdown') });
-      PouchDB.defaults({db: require('memdown') });
-      PouchDB.defaults({db: require('memdown') });
+      PouchDB.defaults({db: require('memdown'), adapter: 'fs' });
+      PouchDB.defaults({db: require('memdown'), adapter: 'fs' });
+      PouchDB.defaults({db: require('memdown'), adapter: 'fs' });
+      PouchDB.defaults({db: require('memdown'), adapter: 'fs' });
     });
 
     it('should allow us to set a prefix by default', function () {
@@ -69,7 +69,7 @@ if (!process.env.LEVEL_ADAPTER &&
     });
 
     it('should allow us to use memdown', function () {
-      var opts = { name: 'mydb', db: require('memdown') };
+      var opts = { name: 'mydb', db: require('memdown'), adapter: 'fs' };
       return new PouchDB(opts).then(function (db) {
         return db.put({_id: 'foo'}).then(function () {
           return new PouchDB('mydb').then(function (otherDB) {
@@ -87,7 +87,7 @@ if (!process.env.LEVEL_ADAPTER &&
     });
 
     it('should allow us to destroy memdown', function () {
-      var opts = {db: require('memdown') };
+      var opts = {db: require('memdown'), adapter: 'fs' };
       return new PouchDB('mydb', opts).then(function (db) {
         return db.put({_id: 'foo'}).then(function () {
           return new PouchDB('mydb', opts).then(function (otherDB) {
@@ -110,7 +110,7 @@ if (!process.env.LEVEL_ADAPTER &&
     });
 
     it('should allow us to use memdown by default', function () {
-      var CustomPouch = PouchDB.defaults({db: require('memdown')});
+      var CustomPouch = PouchDB.defaults({db: require('memdown'), adapter: 'fs'});
       return new CustomPouch('mydb').then(function (db) {
         return db.put({_id: 'foo'}).then(function () {
           return new PouchDB('mydb').then(function (otherDB) {
@@ -129,7 +129,7 @@ if (!process.env.LEVEL_ADAPTER &&
 
 
     it('should inform us when using memdown', function () {
-      var opts = { name: 'mydb', db: require('memdown') };
+      var opts = { name: 'mydb', db: require('memdown'), adapter: 'fs' };
       return new PouchDB(opts).then(function (db) {
         return db.info().then(function (info) {
           info.backend_adapter.should.equal('MemDOWN');
@@ -138,7 +138,7 @@ if (!process.env.LEVEL_ADAPTER &&
     });
 
     it('constructor emits destroyed when using defaults', function () {
-      var CustomPouch = PouchDB.defaults({db: require('memdown')});
+      var CustomPouch = PouchDB.defaults({db: require('memdown'), adapter: 'fs'});
 
       return new CustomPouch('mydb').then(function (db) {
         return new testUtils.Promise(function (resolve) {
@@ -152,7 +152,7 @@ if (!process.env.LEVEL_ADAPTER &&
     });
 
     it('db emits destroyed when using defaults', function () {
-      var CustomPouch = PouchDB.defaults({db: require('memdown')});
+      var CustomPouch = PouchDB.defaults({db: require('memdown'), adapter: 'fs'});
 
       return new CustomPouch('mydb').then(function (db) {
         return new testUtils.Promise(function (resolve) {
@@ -163,7 +163,7 @@ if (!process.env.LEVEL_ADAPTER &&
     });
 
     it('constructor emits creation event', function (done) {
-      var CustomPouch = PouchDB.defaults({db: require('memdown')});
+      var CustomPouch = PouchDB.defaults({db: require('memdown'), adapter: 'fs'});
 
       CustomPouch.once('created', function (name) {
         name.should.equal('mydb', 'should be same thing');
@@ -175,7 +175,7 @@ if (!process.env.LEVEL_ADAPTER &&
     // somewhat odd behavior (CustomPouch constructor always mirrors PouchDB),
     // but better to test it explicitly
     it('PouchDB emits destroyed when using defaults', function () {
-      var CustomPouch = PouchDB.defaults({db: require('memdown')});
+      var CustomPouch = PouchDB.defaults({db: require('memdown'), adapter: 'fs'});
 
       return new CustomPouch('mydb').then(function (db) {
         return new testUtils.Promise(function (resolve) {
@@ -191,7 +191,7 @@ if (!process.env.LEVEL_ADAPTER &&
     // somewhat odd behavior (CustomPouch constructor always mirrors PouchDB),
     // but better to test it explicitly
     it('PouchDB emits created when using defaults', function (done) {
-      var CustomPouch = PouchDB.defaults({db: require('memdown')});
+      var CustomPouch = PouchDB.defaults({db: require('memdown'), adapter: 'fs'});
 
       PouchDB.once('created', function (name) {
         name.should.equal('mydb', 'should be same thing');
