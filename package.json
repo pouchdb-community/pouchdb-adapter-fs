@@ -4,7 +4,7 @@
   "description": "PouchDB adapter that uses fsdown",
   "main": "index.js",
   "scripts": {
-    "test": "cd pouchdb && npm i && npm link .. && CLIENT_ADAPTER=pouchdb-adapter-fs npm t"
+    "test": "bash bin/test-node.sh"
   },
   "keywords": [
     "fs",
@@ -15,8 +15,24 @@
   "license": "Apache-2.0",
   "dependencies": {
     "fsdown": "^1.0.0",
-    "js-extend": "^1.0.1",
-    "pouchdb-adapter-leveldb-core": "^5.4.5"
+    "js-extend": "^1.0.1"
   },
-  "files": []
+  "files": [],
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "memdown": "^1.2.0",
+    "mocha": "2.5.3",
+    "ncp": "^2.0.0",
+    "pouchdb-adapter-http": "^5.4.5",
+    "pouchdb-ajax": "5.4.5",
+    "pouchdb-core": "^5.4.5",
+    "pouchdb-errors": "5.4.5",
+    "pouchdb-mapreduce": "^5.4.5",
+    "pouchdb-promise": "5.4.5",
+    "pouchdb-replication": "^5.4.5",
+    "rimraf": "^2.5.4",
+    "seedrandom": "^2.4.2",
+    "throw-max-listeners-error": "^1.0.1"
+  }
 }
