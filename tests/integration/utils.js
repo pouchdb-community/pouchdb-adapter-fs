@@ -2,7 +2,21 @@
 /* jshint -W079 */
 'use strict';
 
-var testUtils = {};
+var path = require('path');
+
+var binaryUtils = require('pouchdb-binary-utils');
+var utils = require('pouchdb-utils');
+var testUtils = {
+  ajax: require('pouchdb-ajax'),
+  Promise: require('pouchdb-promise'),
+  btoa: binaryUtils.btoa,
+  atob: binaryUtils.atob,
+  binaryStringToBlob: binaryUtils.binaryStringToBlobOrBuffer,
+  uuid: utils.uuid,
+  parseUri: utils.parseUri,
+  extend: require('js-extend').extend,
+  errors: require('pouchdb-errors')
+}
 
 function uniq(list) {
   var map = {};
@@ -69,15 +83,15 @@ testUtils.readBlob = function (blob, callback) {
   } else {
     var reader = new FileReader();
     reader.onloadend = function () {
-      
+
       var binary = "";
       var bytes = new Uint8Array(this.result || '');
       var length = bytes.byteLength;
-      
+
       for (var i = 0; i < length; i++) {
         binary += String.fromCharCode(bytes[i]);
       }
-      
+
       callback(binary);
     };
     reader.readAsArrayBuffer(blob);
@@ -256,21 +270,6 @@ testUtils.promisify = function (fun, context) {
   };
 };
 
-// We need to use pouchdb-for-coverage here to ensure that e.g pouchdb-utils
-// and pouchdb-ajax don't get pulled in, because then our coverage tests
-// would complain that we're not using the "whole" thing.
-var PouchForCoverage = require('../../packages/pouchdb-for-coverage');
-var pouchUtils = PouchForCoverage.utils;
-testUtils.binaryStringToBlob = pouchUtils.binaryStringToBlobOrBuffer;
-testUtils.btoa = pouchUtils.btoa;
-testUtils.atob = pouchUtils.atob;
-testUtils.Promise = pouchUtils.Promise;
-testUtils.ajax = PouchForCoverage.ajax;
-testUtils.uuid = pouchUtils.uuid;
-testUtils.parseUri = pouchUtils.parseUri;
-testUtils.errors = PouchForCoverage.Errors;
-testUtils.extend = require('js-extend').extend;
-
 testUtils.makeBlob = function (data, type) {
   if (typeof process !== 'undefined' && !process.browser) {
     return new Buffer(data, 'binary');
@@ -323,11 +322,11 @@ testUtils.removeUnhandledRejectionListener = function (listener) {
 };
 
 if (typeof process !== 'undefined' && !process.browser) {
-  if (process.env.COVERAGE) {
-    global.PouchDB = require('../../packages/pouchdb-for-coverage');
-  } else { // no need to check for coverage
-    global.PouchDB = require('../../packages/pouchdb');
-  }
+  global.PouchDB = require('pouchdb-core')
+    .plugin(require('pouchdb-adapter-http'))
+    .plugin(require('pouchdb-mapreduce'))
+    .plugin(require('pouchdb-replication'))
+    .plugin(require('../..'));
 
   if (process.env.LEVEL_ADAPTER || process.env.LEVEL_PREFIX) {
     // test a special *down adapter and/or prefix
@@ -353,14 +352,16 @@ if (typeof process !== 'undefined' && !process.browser) {
     // test WebSQL in Node
     // (the two strings are just to fool Browserify because sqlite3 fails
     // in Node 0.11-0.12)
-    require('../../packages/' + 'pouchdb/extras/websql');
+    require('../../packages/node_modules/' + 'pouchdb/extras/websql');
+    global.PouchDB.preferredAdapters = ['websql', 'leveldb'];
     global.PouchDB = global.PouchDB.defaults({
-      prefix: './tmp/_pouch_'
+      prefix: path.resolve('./tmp/_pouch_')
     });
-    delete global.PouchDB.adapters.leveldb;
   } else {
     // test regular leveldown in node
-    global.PouchDB = global.PouchDB.defaults({prefix: './tmp/_pouch_'});
+    global.PouchDB = global.PouchDB.defaults({
+      prefix: path.resolve('./tmp/_pouch_')
+    });
   }
 
   require('mkdirp').sync('./tmp');
