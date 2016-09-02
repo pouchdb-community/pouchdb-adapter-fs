@@ -21,3 +21,9 @@ var PouchDB = require('pouchdb-core')
 var db = new PouchDB('mydb', {adapter: 'fs'});
 ```
 
+Testing
+--------
+
+```
+COUCH_HOST=http://admin:secret@localhost:5984 npm test
+```
