@@ -1,10 +1,10 @@
 {
   "name": "pouchdb-adapter-fs",
-  "version": "1.0.0",
   "description": "PouchDB adapter that uses fsdown",
   "main": "index.js",
   "scripts": {
-    "test": "bash bin/test-node.sh"
+    "test": "bash bin/test-node.sh",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
     "fs",
@@ -34,6 +34,11 @@
     "pouchdb-replication": "^5.4.5",
     "rimraf": "^2.5.4",
     "seedrandom": "^2.4.2",
+    "semantic-release": "^6.3.0",
     "throw-max-listeners-error": "^1.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nolanlawson/pouchdb-adapter-fs.git"
   }
 }
