@@ -6,6 +6,8 @@ services:
   - couchdb
 git:
   depth: 30
+after_success:
+  - npm run semantic-release
 env:
   matrix:
   - COUCH_HOST=http://localhost:5984
