@@ -27,7 +27,7 @@
     "ncp": "^2.0.0",
     "pouchdb-adapter-http": "^5.4.5",
     "pouchdb-ajax": "6.0.4",
-    "pouchdb-core": "^5.4.5",
+    "pouchdb-core": "^6.0.4",
     "pouchdb-errors": "5.4.5",
     "pouchdb-mapreduce": "^5.4.5",
     "pouchdb-promise": "5.4.5",
