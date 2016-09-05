@@ -358,7 +358,7 @@ adapters.forEach(function (adapters) {
         return remote.put(doc2);
       }).then(function () {
         return new testUtils.Promise(function (resolve, reject) {
-          db.replicate.sync(remote).on('complete', resolve).on('error', reject);
+          db.sync(remote).on('complete', resolve).on('error', reject);
         });
       }).then(function () {
         // Replication isn't finished until onComplete has been called twice
@@ -799,6 +799,37 @@ adapters.forEach(function (adapters) {
         return remote.allDocs();
       }).then(function (docs) {
         docs.total_rows.should.equal(3);
+      });
+    });
+
+    it('5007 sync 2 databases', function () {
+
+      var db = new PouchDB(dbs.name);
+
+      var remote1 = new PouchDB(dbs.remote);
+      var remote2 = new PouchDB(dbs.remote + '_2');
+
+      var sync1 = db.sync(remote1, {live: true});
+      var sync2 = db.sync(remote2, {live: true});
+
+      var numChanges = 0;
+      function onChange() {
+        if (++numChanges === 2) {
+          changes1.cancel();
+          changes2.cancel();
+          sync1.cancel();
+          sync2.cancel();
+        }
+      }
+
+      var changes1 = remote1.changes({live: true}).on('change', onChange);
+      var changes2 = remote2.changes({live: true}).on('change', onChange);
+
+      db.post({foo: 'bar'});
+
+      var promises = [changes1, changes2, sync1, sync2];
+      return testUtils.Promise.all(promises).then(function () {
+        return remote2.destroy();
       });
     });
 
