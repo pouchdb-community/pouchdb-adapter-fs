@@ -31,7 +31,7 @@
     "pouchdb-errors": "5.4.5",
     "pouchdb-mapreduce": "^5.4.5",
     "pouchdb-promise": "5.4.5",
-    "pouchdb-replication": "^5.4.5",
+    "pouchdb-replication": "^6.0.4",
     "rimraf": "^2.5.4",
     "seedrandom": "^2.4.2",
     "semantic-release": "^6.3.0",
