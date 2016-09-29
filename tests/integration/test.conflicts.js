@@ -512,7 +512,7 @@ adapters.forEach(function (adapter) {
       return chain;
     });
 
-    it('local conflicts', function (done) {
+    it('local conflicts', function () {
       if (testUtils.isCouchMaster()) {
         return done();
       }
@@ -523,10 +523,8 @@ adapters.forEach(function (adapter) {
         return db.put({foo: 'bar'}, '_local/baz');
       }, function (e) {
         should.not.exist(e, 'shouldn\'t error yet');
-        done(e);
       }).then(undefined, function (e) {
         should.exist(e, 'error when you have a conflict');
-        done();
       });
     });
 

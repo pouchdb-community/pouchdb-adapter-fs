@@ -85,7 +85,7 @@ adapters.forEach(function (adapter) {
       }
     };
 
-    it('3357 Attachment names cant start with _', function (done) {
+    it('3357 Attachment names cant start with _', function () {
       var db = new PouchDB(dbs.name);
       var doc = {_id: 'baz', _attachments: {
         '_text1.txt': {
@@ -94,10 +94,9 @@ adapters.forEach(function (adapter) {
         }
       }};
       return db.put(doc).then(function () {
-        done('Should not succeed');
+        throw new Error('Should not succeed');
       }).catch(function (err) {
         err.name.should.equal('bad_request');
-        done();
       });
     });
 
@@ -3164,7 +3163,7 @@ adapters.forEach(function (adapter) {
         });
       });
     }
-    
+
     it('#2709 `revpos` with putAttachment', function (done) {
       var db = new PouchDB(dbs.name);
       db.putAttachment('a', 'one', '', testUtils.btoa('one'), 'text/plain', function () {
@@ -3188,7 +3187,7 @@ adapters.forEach(function (adapter) {
         });
       });
     });
-    
+
     it('#2709 `revpos` with inline attachment', function (done) {
       var db = new PouchDB(dbs.name);
       var doc = {
@@ -3239,7 +3238,7 @@ adapters.forEach(function (adapter) {
         });
       });
     });
-    
+
   });
 });
 

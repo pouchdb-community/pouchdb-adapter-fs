@@ -157,7 +157,7 @@ adapters.forEach(function (adapter) {
 
       db.info(function (err, info) {
         var update_seq = info.update_seq;
-        
+
         testUtils.writeDocs(db, JSON.parse(JSON.stringify(origDocs)),
           function () {
           db.get('1', function (err, doc) {
@@ -185,8 +185,8 @@ adapters.forEach(function (adapter) {
 
       db.info(function (err, info) {
         var update_seq = info.update_seq;
-        
-        testUtils.writeDocs(db, JSON.parse(JSON.stringify(origDocs)), 
+
+        testUtils.writeDocs(db, JSON.parse(JSON.stringify(origDocs)),
           function () {
           db.get('3', function (err, doc) {
             doc.updated = 'totally';
@@ -654,27 +654,25 @@ adapters.forEach(function (adapter) {
       });
     });
 
-    it('test empty db', function (done) {
+    it('test empty db', function () {
       var db = new PouchDB(dbs.name);
       return db.allDocs().then(function (res) {
         res.rows.should.have.length(0);
         res.total_rows.should.equal(0);
-        done();
       });
     });
 
-    it('test after db close', function (done) {
+    it('test after db close', function () {
       var db = new PouchDB(dbs.name);
       return db.close().then(function () {
         return db.allDocs().catch(function (err) {
           err.message.should.equal('database is closed');
-          done();
         });
       });
     });
 
     if (adapter === 'local') { // chrome doesn't like \u0000 in URLs
-      it('test unicode ids and revs', function (done) {
+      it('test unicode ids and revs', function () {
         var db = new PouchDB(dbs.name);
         var id = 'baz\u0000';
         var rev;
@@ -689,7 +687,7 @@ adapters.forEach(function (adapter) {
           }).then(function (res) {
             res.rows.should.have.length(1);
             res.rows[0].value.rev.should.equal(rev);
-          }).then(done, done);
+          })
       });
     }
   });

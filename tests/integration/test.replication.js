@@ -3561,7 +3561,7 @@ adapters.forEach(function (adapters) {
     });
 
     it('#2970 should replicate remote database w/ deleted conflicted revs',
-        function (done) {
+        function () {
       var local = new PouchDB(dbs.name);
       var remote = new PouchDB(dbs.remote);
       var docid = "mydoc";
@@ -3634,9 +3634,7 @@ adapters.forEach(function (adapters) {
           result.docs_written.should.equal(2,
             'replicated the correct number of documents');
         });
-      })
-
-      .then(function () { done(); }, done);
+      });
     });
 
 
@@ -4368,10 +4366,10 @@ adapters.forEach(function (adapters) {
       db.post({a: 'doc'});
     });
 
-    it('Heartbeat gets passed', function (done) {
+    it('Heartbeat gets passed', function () {
 
       if (!(/http/.test(dbs.remote) && !/http/.test(dbs.name))) {
-        return done();
+        return Promise.resolve();
       }
 
       var db = new PouchDB(dbs.name);
@@ -4391,14 +4389,13 @@ adapters.forEach(function (adapters) {
       }).then(function () {
         seenHeartBeat.should.equal(true);
         remote._ajax = ajax;
-        done();
       });
     });
 
-    it('Timeout gets passed', function (done) {
+    it('Timeout gets passed', function () {
 
       if (!(/http/.test(dbs.remote) && !/http/.test(dbs.name))) {
-        return done();
+        return Promise.resolve()
       }
 
       var db = new PouchDB(dbs.name);
@@ -4419,7 +4416,6 @@ adapters.forEach(function (adapters) {
       }).then(function () {
         seenTimeout.should.equal(true);
         remote._ajax = ajax;
-        done();
       });
     });
 
@@ -4432,7 +4428,7 @@ adapters.forEach(function (adapters) {
       var db = new PouchDB(dbs.name);
       var remote = new PouchDB('http://localhost:9382/does_not_exist', {skip_setup: true});
 
-      return remote.replicate.to(db, {
+      remote.replicate.to(db, {
           live: true,
           since: 0,
           timeout: 20000

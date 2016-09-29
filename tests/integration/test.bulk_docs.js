@@ -857,7 +857,7 @@ adapters.forEach(function (adapter) {
       });
     });
 
-    it('Bulk docs two different revisions to same document id', function (done) {
+    it('Bulk docs two different revisions to same document id', function () {
       var db = new PouchDB(dbs.name);
       var docid = "mydoc";
 
@@ -910,8 +910,6 @@ adapters.forEach(function (adapter) {
             resp[1].ok._rev === a_doc._rev)).should.equal(true);
         });
       })
-
-      .then(function () { done(); }, done);
     });
 
     it('4204 respect revs_limit', function () {
