@@ -28,7 +28,7 @@
     "pouchdb-adapter-http": "^6.0.5",
     "pouchdb-ajax": "6.0.5",
     "pouchdb-core": "^6.0.5",
-    "pouchdb-errors": "6.0.5",
+    "pouchdb-errors": "6.0.6",
     "pouchdb-mapreduce": "^6.0.5",
     "pouchdb-promise": "6.0.5",
     "pouchdb-replication": "^6.0.5",
