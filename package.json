@@ -25,7 +25,7 @@
     "memdown": "^1.2.0",
     "mocha": "3.1.0",
     "ncp": "^2.0.0",
-    "pouchdb-adapter-http": "^6.0.5",
+    "pouchdb-adapter-http": "^6.0.6",
     "pouchdb-ajax": "6.0.5",
     "pouchdb-core": "^6.0.5",
     "pouchdb-errors": "6.0.5",
