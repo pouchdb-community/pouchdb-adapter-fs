@@ -16,7 +16,7 @@
   "dependencies": {
     "fsdown": "^2.0.1",
     "js-extend": "^1.0.1",
-    "pouchdb-adapter-leveldb-core": "6.0.6"
+    "pouchdb-adapter-leveldb-core": "6.0.7"
   },
   "files": [],
   "devDependencies": {
