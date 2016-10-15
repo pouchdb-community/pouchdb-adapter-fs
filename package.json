@@ -26,7 +26,7 @@
     "mocha": "3.1.2",
     "ncp": "^2.0.0",
     "pouchdb-adapter-http": "^6.0.6",
-    "pouchdb-ajax": "6.0.6",
+    "pouchdb-ajax": "6.0.7",
     "pouchdb-core": "^6.0.6",
     "pouchdb-errors": "6.0.6",
     "pouchdb-mapreduce": "^6.0.6",
