@@ -30,7 +30,7 @@
     "pouchdb-core": "^6.1.1",
     "pouchdb-errors": "6.1.1",
     "pouchdb-mapreduce": "^6.1.1",
-    "pouchdb-promise": "6.1.1",
+    "pouchdb-promise": "6.1.2",
     "pouchdb-replication": "^6.1.1",
     "rimraf": "^2.5.4",
     "seedrandom": "^2.4.2",
