@@ -29,7 +29,7 @@
     "pouchdb-ajax": "6.1.2",
     "pouchdb-core": "^6.1.2",
     "pouchdb-errors": "6.1.2",
-    "pouchdb-mapreduce": "^6.1.2",
+    "pouchdb-mapreduce": "^6.2.0",
     "pouchdb-promise": "6.1.2",
     "pouchdb-replication": "^6.1.2",
     "rimraf": "^2.5.4",
