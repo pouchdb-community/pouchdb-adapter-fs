@@ -16,21 +16,21 @@
   "dependencies": {
     "fsdown": "^2.0.1",
     "js-extend": "^1.0.1",
-    "pouchdb-adapter-leveldb-core": "6.1.2"
+    "pouchdb-adapter-leveldb-core": "6.2.0"
   },
   "files": [],
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "memdown": "^1.2.3",
-    "mocha": "3.2.0",
+    "mocha": "3.4.2",
     "ncp": "^2.0.0",
     "pouchdb-adapter-http": "^6.1.2",
-    "pouchdb-ajax": "6.1.2",
+    "pouchdb-ajax": "6.2.0",
     "pouchdb-core": "^6.1.2",
-    "pouchdb-errors": "6.1.2",
+    "pouchdb-errors": "6.2.0",
     "pouchdb-mapreduce": "^6.1.2",
-    "pouchdb-promise": "6.1.2",
+    "pouchdb-promise": "6.2.0",
     "pouchdb-replication": "^6.1.2",
     "rimraf": "^2.5.4",
     "seedrandom": "^2.4.2",
