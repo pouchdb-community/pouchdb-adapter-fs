@@ -34,11 +34,12 @@
     "pouchdb-replication": "^6.2.0",
     "rimraf": "^2.5.4",
     "seedrandom": "^2.4.2",
-    "semantic-release": "^6.3.0",
+    "semantic-release": "^6.3.6",
     "throw-max-listeners-error": "^1.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nolanlawson/pouchdb-adapter-fs.git"
-  }
+    "url": "https://github.com/pouchdb-community/pouchdb-adapter-fs.git"
+  },
+  "version": "0.0.0-development"
 }
