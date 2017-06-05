@@ -23,7 +23,7 @@
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "memdown": "^1.2.3",
-    "mocha": "3.2.0",
+    "mocha": "3.4.2",
     "ncp": "^2.0.0",
     "pouchdb-adapter-http": "^6.2.0",
     "pouchdb-ajax": "6.2.0",
